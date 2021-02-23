@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import junit.framework.Assert;
 import pageObjects.Objects;
 import resources.Base;
 
@@ -24,8 +25,24 @@ public class accesoriesTest extends Base {
 	}
 
 	@Test
-	public void accesories() {
+	public void accesories() throws InterruptedException {
 		Objects lpObjects = new Objects(driver);
 		lpObjects.accesoriesButton().click();
+		lpObjects.hats().click();
+		lpObjects.sortByRelevance().click();
+		Thread.sleep(2000);
+		lpObjects.firstGridItem().click();
+		Thread.sleep(2000);
+		lpObjects.addToCart().click();
+		Thread.sleep(2000);
+		Assert.assertTrue(lpObjects.cartPopUp().isDisplayed());
+		lpObjects.viewCart().click();
+	}
+	@Test
+	public void cart() {
+		Objects lpObjects = new Objects(driver);
+		lpObjects.qty().clear();
+		lpObjects.qty().sendKeys("3");
+		lpObjects.update().click();
 	}
 }
