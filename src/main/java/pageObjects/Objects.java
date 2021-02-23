@@ -20,6 +20,8 @@ public class Objects {
 	By viewCart = By.id("mpViewCart");
 	By qty = By.id("artist_shop_qty_1915297106");
 	By update = By.id("qty_update_button_1915297106");
+	By searchBar = By.id("search");
+	By sizeS = By.cssSelector("a[class='pjax-link size-link']");
 
 	public WebElement accesoriesButton() {
 		return driver.findElement(accesories);
@@ -55,5 +57,13 @@ public class Objects {
 
 	public WebElement update() {
 		return driver.findElement(update);
+	}
+
+	public WebElement search() {
+		return driver.findElement(searchBar);
+	}
+
+	public WebElement sizeS() {
+		return driver.findElement(sizeS);
 	}
 }

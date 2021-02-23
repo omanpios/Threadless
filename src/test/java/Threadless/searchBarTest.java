@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.testng.annotations.AfterTest;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -12,7 +12,7 @@ import junit.framework.Assert;
 import pageObjects.Objects;
 import resources.Base;
 
-public class accesoriesTest extends Base {
+public class searchBarTest extends Base {
 	Properties prop = new Properties();
 	Objects lpObjects = new Objects(driver);
 
@@ -24,30 +24,24 @@ public class accesoriesTest extends Base {
 		driver = initializeDriver();
 		driver.get(baseURL);
 	}
-
 	@Test
-	public void accesories() throws InterruptedException {
+	public void searchBar() {
 		Objects lpObjects = new Objects(driver);
-		lpObjects.accesoriesButton().click();
-		lpObjects.hats().click();
-		lpObjects.sortByRelevance().click();
-		Thread.sleep(2000);
+		lpObjects.search().click();
+		lpObjects.search().sendKeys("Cats");
+		lpObjects.search().sendKeys(Keys.ENTER);
+	}
+	@Test
+	public void selectItem() throws InterruptedException {
+		Objects lpObjects = new Objects(driver);
 		lpObjects.firstGridItem().click();
 		Thread.sleep(2000);
+		Assert.assertTrue(lpObjects.sizeS().isDisplayed());
+		lpObjects.sizeS().click();
+		Thread.sleep(1500);
 		lpObjects.addToCart().click();
 		Thread.sleep(2000);
 		Assert.assertTrue(lpObjects.cartPopUp().isDisplayed());
 		lpObjects.viewCart().click();
-	}
-	@Test
-	public void cart() {
-		Objects lpObjects = new Objects(driver);
-		lpObjects.qty().clear();
-		lpObjects.qty().sendKeys("3");
-		lpObjects.update().click();
-	}
-	@AfterTest
-	public void closeBrowser() {
-		driver.quit();
 	}
 }
