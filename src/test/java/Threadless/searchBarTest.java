@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -24,6 +25,7 @@ public class searchBarTest extends Base {
 		driver = initializeDriver();
 		driver.get(baseURL);
 	}
+
 	@Test
 	public void searchBar() {
 		Objects lpObjects = new Objects(driver);
@@ -31,6 +33,7 @@ public class searchBarTest extends Base {
 		lpObjects.search().sendKeys("Cats");
 		lpObjects.search().sendKeys(Keys.ENTER);
 	}
+
 	@Test
 	public void selectItem() throws InterruptedException {
 		Objects lpObjects = new Objects(driver);
@@ -43,5 +46,10 @@ public class searchBarTest extends Base {
 		Thread.sleep(2000);
 		Assert.assertTrue(lpObjects.cartPopUp().isDisplayed());
 		lpObjects.viewCart().click();
+	}
+
+	@AfterTest
+	public void closeBrowser() {
+		driver.quit();
 	}
 }
