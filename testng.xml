@@ -11,4 +11,9 @@
 			<class name="Threadless.searchBarTest" />
 		</classes>
 	</test>
+	<test name="Links Validation">
+		<classes>
+			<class name="Threadless.linksValidation" />
+		</classes>
+	</test>
 </suite> <!-- Suite -->

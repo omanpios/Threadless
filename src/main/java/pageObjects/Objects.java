@@ -1,5 +1,7 @@
 package pageObjects;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,11 +20,29 @@ public class Objects {
 	By addToCart = By.cssSelector("button[class='productPicker-cart']");
 	By cartPopUp = By.cssSelector("div[class='modal_container cart-modal']");
 	By viewCart = By.id("mpViewCart");
-	By qty = By.id("artist_shop_qty_1915297106");
-	By update = By.id("qty_update_button_1915297106");
+	By qty = By.className("cart_page_quantity_input");
+	By update = By.linkText("Update");
 	By searchBar = By.id("search");
 	By sizeS = By.cssSelector("a[class='pjax-link size-link']");
-
+	
+	By bottomShopLinks = By.cssSelector("li[class='shop'] a");
+	By bottomCommunityLinks = By.cssSelector("li[class='community'] a");
+	By bottomInfoLinks = By.cssSelector("li[class='info'] a");
+	
+	public List<WebElement> bottomShopLinks() {
+		return driver.findElements(bottomShopLinks);
+	}
+	
+	public List<WebElement> bottomCommunityLinks() {
+		return driver.findElements(bottomCommunityLinks);
+	}
+	
+	public List<WebElement> bottomInfoLinks() {
+		return driver.findElements(bottomInfoLinks);
+	}
+	
+	
+	
 	public WebElement accesoriesButton() {
 		return driver.findElement(accesories);
 	}
@@ -66,4 +86,5 @@ public class Objects {
 	public WebElement sizeS() {
 		return driver.findElement(sizeS);
 	}
+	
 }
