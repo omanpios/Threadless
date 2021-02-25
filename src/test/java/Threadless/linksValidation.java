@@ -7,7 +7,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -27,12 +29,16 @@ public class linksValidation extends Base {
 		String baseURL = prop.getProperty("BaseURL");
 		driver = initializeDriver();
 		driver.get(baseURL);
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,3000)");
+
 	}
 
 	@Test
 	public void bottomShopLinks() throws MalformedURLException, IOException {
 		Objects lpObjects = new Objects(driver);
-
+		
 		for (WebElement link : lpObjects.bottomShopLinks()) {
 			String url = link.getAttribute("href");
 

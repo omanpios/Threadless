@@ -24,25 +24,25 @@ public class Objects {
 	By update = By.linkText("Update");
 	By searchBar = By.id("search");
 	By sizeS = By.cssSelector("a[class='pjax-link size-link']");
-	
+
 	By bottomShopLinks = By.cssSelector("li[class='shop'] a");
 	By bottomCommunityLinks = By.cssSelector("li[class='community'] a");
 	By bottomInfoLinks = By.cssSelector("li[class='info'] a");
-	
+
+	By footerFocus = By.cssSelector("li[class='shop']");
+
 	public List<WebElement> bottomShopLinks() {
 		return driver.findElements(bottomShopLinks);
 	}
-	
+
 	public List<WebElement> bottomCommunityLinks() {
 		return driver.findElements(bottomCommunityLinks);
 	}
-	
+
 	public List<WebElement> bottomInfoLinks() {
 		return driver.findElements(bottomInfoLinks);
 	}
-	
-	
-	
+
 	public WebElement accesoriesButton() {
 		return driver.findElement(accesories);
 	}
@@ -86,5 +86,8 @@ public class Objects {
 	public WebElement sizeS() {
 		return driver.findElement(sizeS);
 	}
-	
+
+	public WebElement footerFocus() {
+		return driver.findElement(footerFocus);
+	}
 }
