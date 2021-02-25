@@ -40,11 +40,13 @@ public class accesoriesTest extends Base {
 		lpObjects.viewCart().click();
 	}
 	@Test
-	public void cart() {
+	public void cart() throws InterruptedException {
 		Objects lpObjects = new Objects(driver);
 		lpObjects.qty().clear();
 		lpObjects.qty().sendKeys("3");
 		lpObjects.update().click();
+		Thread.sleep(3000);
+		Assert.assertTrue(lpObjects.update().isDisplayed());
 	}
 	@AfterTest
 	public void closeBrowser() {
